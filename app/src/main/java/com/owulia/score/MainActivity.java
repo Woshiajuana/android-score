@@ -5,6 +5,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.SavedStateVMFactory;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.owulia.score.databinding.ActivityMainBinding;
@@ -23,5 +25,11 @@ public class MainActivity extends AppCompatActivity {
 //        myViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MyViewModel.class);
         binding.setData(myViewModel);
         binding.setLifecycleOwner(this);
+
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("NUMBER", 100);
+        editor.apply();
+
     }
 }
